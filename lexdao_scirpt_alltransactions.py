@@ -1,10 +1,3 @@
-'''https://api.etherscan.io/api
-   ?module=account
-   &action=balance
-   &address=0x5a741ab878bb65f6ae5506455fb555eaf3094b3f
-   &tag=latest
-   &apikey=YourApiKeyToken'''
-
 from requests import get
 from matplotlib import pyplot as plt
 from datetime import datetime
@@ -61,7 +54,12 @@ def get_transactions(address):
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 get_transactions(address)
 
-
+'''https://api.etherscan.io/api
+   ?module=account
+   &action=balance
+   &address=0x5a741ab878bb65f6ae5506455fb555eaf3094b3f
+   &tag=latest
+   &apikey=YourApiKeyToken'''
 
 '''https://api.etherscan.io/api
    ?module=account
