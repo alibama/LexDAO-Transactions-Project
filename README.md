@@ -4,6 +4,9 @@ These scripts uses a config.py file stored locally to manage API credentials as 
 
 The file connects to the etherscan API and pulls all transactions for a single wallet along with some minor formatting of the structured data.  In this case it is coded to pull the ethereum transactions from the LexDAO Main Wallet.
 
+# Citations
+**The primary source for this exercise was this youtube video with minor edits to the code** 
+Title: Track Ethereum Transactions and Balance Using Python)
+Author: Tech With Tim 
+  https://www.youtube.com/watch?v=x5FHbr0Em5A
 
-The primary source for this exercise was this youtube video with minor edits to the code https://www.youtube.com/watch?v=x5FHbr0Em5A
-  (Author: Tech With Tim | Title: Track Ethereum Transactions and Balance Using Python)
