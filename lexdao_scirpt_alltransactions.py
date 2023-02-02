@@ -2,7 +2,9 @@ from requests import Request, Session, get
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from matplotlib import pyplot as plt
 from datetime import datetime
-
+import requests_cache
+import pandas as pd
+import requests
 # streamlit_app.py
 
 import streamlit as st
