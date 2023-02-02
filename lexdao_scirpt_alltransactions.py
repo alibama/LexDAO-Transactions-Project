@@ -122,8 +122,7 @@ address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 import etherscan
 
 es = etherscan.Client(
-    api_key='ether_api_key',
-    cache_expire_after=5,
+    api_key='ether_api_key'
 )
 
 
