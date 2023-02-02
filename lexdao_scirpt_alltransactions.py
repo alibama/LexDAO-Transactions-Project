@@ -127,7 +127,8 @@ es = etherscan.Client(
 )
 
 
+eth_price = es.get_eth_price()
+st.write(eth_price)
+#transactions = es.get_transactions_by_address('0x5a741ab878bb65f6ae5506455fb555eaf3094b3f')
 
-transactions = es.get_transactions_by_address('0x5a741ab878bb65f6ae5506455fb555eaf3094b3f')
-
-st.write(transactions)
+#st.write(transactions)
