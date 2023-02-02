@@ -4,6 +4,37 @@ from datetime import datetime
 import config
 
 
+# streamlit_app.py
+
+import streamlit as st
+import psycopg2
+
+# Initialize connection.
+# Uses st.experimental_singleton to only run once.
+@st.experimental_singleton
+def init_connection():
+    return psycopg2.connect(**st.secrets["postgres"])
+
+conn = init_connection()
+
+# Perform query.
+# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
+@st.experimental_memo(ttl=600)
+
+
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        return cur.fetchall()
+
+rows = run_query("select * from transactions;")
+
+# Print results.
+for row in rows:
+    st.write(f"{row[0]} has a :{row[1]}:")
+
+
+
 BASE_URL = "https://api.etherscan.io/api"
 ETHER_TO_GWEI = 10**18
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
