@@ -2,7 +2,6 @@ from requests import get
 from matplotlib import pyplot as plt
 from datetime import datetime
 
-import etherscan
 # streamlit_app.py
 
 import streamlit as st
