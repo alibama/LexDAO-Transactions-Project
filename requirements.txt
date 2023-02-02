@@ -4,3 +4,4 @@ numpy
 matplotlib
 streamlit
 datetime
+psycopg2-binary
