@@ -36,7 +36,7 @@ import psycopg2
 # for row in rows:
 #     st.write(f"{row[0]} has a :{row[1]}:")
 
-
+etherscan_api_key=st.secrets["etherscan"]["etherscan"]
 #connect to etherscan from api and select all transactions from lexdao address
 
 BASE_URL = "https://api.etherscan.io/api"
@@ -44,7 +44,7 @@ ETHER_TO_GWEI = 10**18
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 
 def make_api_url(module, action, address, **kwargs):
-        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={st.secrets["etherscan"]}"
+        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={etherscan_api_key}"
 
         for key, value in kwargs.items():
             url += f"&{key}={value}"
