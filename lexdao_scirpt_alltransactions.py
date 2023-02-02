@@ -11,7 +11,7 @@ import psycopg2
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
-etherscan_api_key = st.secrets["etherscan"]
+etherscan_api_key = psycopg2.connect(**st.secrets["etherscan"])
 # def init_connection():
 #     return psycopg2.connect(**st.secrets["postgres"])
 
