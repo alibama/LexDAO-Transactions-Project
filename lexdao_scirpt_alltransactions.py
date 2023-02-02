@@ -1,4 +1,5 @@
-from requests import get
+from requests import Request, Session, get
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from matplotlib import pyplot as plt
 from datetime import datetime
 
