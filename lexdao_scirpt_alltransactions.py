@@ -42,13 +42,13 @@ BASE_URL = "https://api.etherscan.io/api"
 ETHER_TO_GWEI = 10**18
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 
-def make_api_url(module, action, address, **kwargs):
-        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={etherscan_api_key}"
+# def make_api_url(module, action, address, **kwargs):
+#         url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={etherscan_api_key}"
 
-        for key, value in kwargs.items():
-            url += f"&{key}={value}"
+#         for key, value in kwargs.items():
+#             url += f"&{key}={value}"
         
-        return url
+#         return url
 
 
 # def get_account_balance(address):
@@ -58,10 +58,10 @@ def make_api_url(module, action, address, **kwargs):
 #    value = print(int(data["result"]) / ETHER_TO_GWEI)
 #    return value
 
-def get_transactions(address):
-       get_transactions_url = make_api_url("account", "txlist", address, startblock=0, endblock=99999999, page=1, offset=10000, sort="asc")
-       response = get(get_transactions_url)
-       data = response.json()["result"]
+# def get_transactions(address):
+#        get_transactions_url = make_api_url("account", "txlist", address, startblock=0, endblock=99999999, page=1, offset=10000, sort="asc")
+#        response = get(get_transactions_url)
+#        data = response.json()["result"]
       
 #       for tx in data:
 #          blocknumber = tx["blockNumber"]
