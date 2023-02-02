@@ -11,41 +11,46 @@ import psycopg2
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
-def init_connection():
-    return psycopg2.connect(**st.secrets["postgres"])
+etherscan_api_key = st.secrets["etherscan"]
+# def init_connection():
+#     return psycopg2.connect(**st.secrets["postgres"])
 
-conn = init_connection()
+# conn = init_connection()
 
-# Perform query.
-# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
-@st.experimental_memo(ttl=600)
+# # Perform query.
+# # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
+# @st.experimental_memo(ttl=600)
 
-
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-        return cur.fetchall()
-
-rows = run_query("select * from transactions;")
-
-# Print results.
-for row in rows:
-    st.write(f"{row[0]} has a :{row[1]}:")
+# #connect to database and select all transactions from table lexdao_transactions
+# init_connection()
 
 
+
+# def run_query(query):
+#     with conn.cursor() as cur:
+#         cur.execute(query)
+#         return cur.fetchall()
+
+# rows = run_query("select * from transactions;")
+
+# # Print results.
+# for row in rows:
+#     st.write(f"{row[0]} has a :{row[1]}:")
+
+
+#connect to etherscan from api and select all transactions from lexdao address
 
 BASE_URL = "https://api.etherscan.io/api"
 ETHER_TO_GWEI = 10**18
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 
 def make_api_url(module, action, address, **kwargs):
-        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={config.api_key}"
+        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={etherscan_api_key}"
 
         for key, value in kwargs.items():
             url += f"&{key}={value}"
         
         return url
-
 
 def get_account_balance(address):
    get_balance_url = make_api_url("account", "balance", address, tags="latest", x="2")
