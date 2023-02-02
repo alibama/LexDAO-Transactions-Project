@@ -10,8 +10,7 @@ import psycopg2
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
-@st.experimental_singleton
-etherscan_api_key = st.secrets["etherscan"]
+#@st.experimental_singleton
 # def init_connection():
 #     return psycopg2.connect(**st.secrets["postgres"])
 
@@ -45,7 +44,7 @@ ETHER_TO_GWEI = 10**18
 address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 
 def make_api_url(module, action, address, **kwargs):
-        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={etherscan_api_key}"
+        url = BASE_URL + f"?module={module}&action={action}&address={address}&apikey={st.secrets["etherscan"]}"
 
         for key, value in kwargs.items():
             url += f"&{key}={value}"
