@@ -1,7 +1,6 @@
 from requests import get
 from matplotlib import pyplot as plt
 from datetime import datetime
-import config
 
 
 # streamlit_app.py
