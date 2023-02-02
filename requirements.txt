@@ -1,5 +1,6 @@
 pandas
-request
+requests
 numpy
-ggplot
+matplotlib
 streamlit
+datetime
