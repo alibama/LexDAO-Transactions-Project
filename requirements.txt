@@ -6,5 +6,5 @@ streamlit
 datetime
 psycopg2-binary
 sqlalchemy
-etherscan2
+shroomdk
 requests-cache

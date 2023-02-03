@@ -119,16 +119,44 @@ address = "0x5a741ab878bb65f6ae5506455fb555eaf3094b3f"
 #    &offset=10
 #    &sort=asc
 #    &apikey=YourApiKeyToken '''
-import etherscan
 
-es = etherscan.Client(
-    api_key='ether_api_key',
-    cache_expire_after=5,
+
+from shroomdk import ShroomDK
+shroom_api_key=st.secrets["shroom"]["apikey"]
+
+from shroomdk import ShroomDK
+
+# Initialize `ShroomDK` with your API Key
+sdk = ShroomDK("shroom_api_key")
+
+
+sql = f"""
+    SELECT 
+        nft_address, 
+        mint_price_eth, 
+        mint_price_usd 
+    FROM ethereum.core.ez_nft_mints 
+    WHERE nft_to_address = LOWER('{address}')
+    LIMIT 100
+"""
+
+query_result_set = sdk.query(
+    sql,
+    ttl_minutes=60,
+    cached=True,
+    timeout_minutes=20,
+    retry_interval_seconds=1,
+    page_size=5,
+    page_number=1
 )
 
+for record in query_result_set.records:
+    nft_address = record['nft_address']
+    mint_price_eth = record['mint_price_eth']
+    mint_price_usd = record['mint_price_usd']
+    print(f"${nft_address} minted for {mint_price_eth}E ({mint_price_usd})USD")
 
-eth_price = es.get_eth_price()
-st.write(eth_price)
+    
 #transactions = es.get_transactions_by_address('0x5a741ab878bb65f6ae5506455fb555eaf3094b3f')
 
 #st.write(transactions)
